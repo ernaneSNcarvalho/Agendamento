@@ -48,4 +48,11 @@ public class ResourceExceptionHandler {
 	        StandardError err = new StandardError(Instant.now(), status.value(), "Internal Server Error", e.getMessage(), request.getRequestURI());
 	        return ResponseEntity.status(status).body(err);
 	    }
+		
+		@ExceptionHandler(InvalidNomeException.class)
+	    public ResponseEntity<StandardError> invalidNome(InvalidNomeException e, HttpServletRequest request) {
+	        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; // Código 500
+	        StandardError err = new StandardError(Instant.now(), status.value(), "Internal Server Error", e.getMessage(), request.getRequestURI());
+	        return ResponseEntity.status(status).body(err);
+	    }
 }
