@@ -1,9 +1,10 @@
 package com.agendamento.Agendamento.entities;
 
 import java.io.Serializable;
-import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Objects;
+
+import com.agendamento.Agendamento.enums.DiaSemana;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,8 +27,9 @@ public class Funcionamento implements Serializable {
 	private Long id;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(name = "dia_semana")
 	@NotNull(message = "O dia da semana é obrigatório.")
-	private DayOfWeek diaSemana;
+	private DiaSemana diaSemana;
 	
 	@Column(name = "hora_abertura", columnDefinition = "TIME")
 	@NotNull(message = "A hora de abertura é obrigatória.")
@@ -44,7 +46,7 @@ public class Funcionamento implements Serializable {
 	public Funcionamento() {
 	}
 
-	public Funcionamento(Long id, DayOfWeek diaSemana, LocalTime horaAbertura, LocalTime horaFechamento,
+	public Funcionamento(Long id, DiaSemana  diaSemana, LocalTime horaAbertura, LocalTime horaFechamento,
 			Integer intervaloMinutos) {
 		super();
 		this.id = id;
@@ -62,11 +64,11 @@ public class Funcionamento implements Serializable {
 		this.id = id;
 	}
 
-	public DayOfWeek getDiaSemana() {
+	public DiaSemana  getDiaSemana() {
 		return diaSemana;
 	}
 
-	public void setDiaSemana(DayOfWeek diaSemana) {
+	public void setDiaSemana(DiaSemana  diaSemana) {
 		this.diaSemana = diaSemana;
 	}
 

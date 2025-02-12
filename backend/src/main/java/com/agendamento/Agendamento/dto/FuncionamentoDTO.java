@@ -5,6 +5,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 import com.agendamento.Agendamento.entities.Funcionamento;
+import com.agendamento.Agendamento.enums.DiaSemana;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Min;
@@ -16,7 +17,7 @@ public class FuncionamentoDTO implements Serializable {
 	private Long Id;
 	
 	@NotNull(message = "O dia da semana é obrigatório.")
-	private DayOfWeek diaSemana;
+	private DiaSemana  diaSemana;
 	
 	@NotNull(message = "A hora de abertura é obrigatória.")
 	private LocalTime horaAbertura;
@@ -32,7 +33,7 @@ public class FuncionamentoDTO implements Serializable {
 	public FuncionamentoDTO() {
 	}
 
-	public FuncionamentoDTO(Long id, @NotNull(message = "O dia da semana é obrigatório.") DayOfWeek diaSemana,
+	public FuncionamentoDTO(Long id, @NotNull(message = "O dia da semana é obrigatório.") DiaSemana  diaSemana,
 			@NotNull(message = "A hora de abertura é obrigatória.") LocalTime horaAbertura,
 			@NotNull(message = "A hora de fechamento é obrigatória.") @FutureOrPresent(message = "A hora de fechamento deve ser válida.") LocalTime horaFechamento,
 			@NotNull(message = "O intervalo entre atendimentos é obrigatório.") @Min(value = 1, message = "O intervalo deve ser de pelo menos 1 minuto.") Integer intervaloMinutos) {
@@ -60,11 +61,11 @@ public class FuncionamentoDTO implements Serializable {
 		Id = id;
 	}
 
-	public DayOfWeek getDiaSemana() {
+	public DiaSemana  getDiaSemana() {
 		return diaSemana;
 	}
 
-	public void setDiaSemana(DayOfWeek diaSemana) {
+	public void setDiaSemana(DiaSemana  diaSemana) {
 		this.diaSemana = diaSemana;
 	}
 

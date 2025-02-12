@@ -55,4 +55,11 @@ public class ResourceExceptionHandler {
 	        StandardError err = new StandardError(Instant.now(), status.value(), "Internal Server Error", e.getMessage(), request.getRequestURI());
 	        return ResponseEntity.status(status).body(err);
 	    }
+		
+		@ExceptionHandler(InvalidHorarioException.class)
+	    public ResponseEntity<StandardError> invalidHorario(InvalidHorarioException e, HttpServletRequest request) {
+	        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; // Código 500
+	        StandardError err = new StandardError(Instant.now(), status.value(), "Internal Server Error", e.getMessage(), request.getRequestURI());
+	        return ResponseEntity.status(status).body(err);
+	    }
 }
